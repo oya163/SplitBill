@@ -63,6 +63,12 @@
     <p>
         <b>Total: @ViewBag.total</b> <br />
         <b>Per Head: @ViewBag.perHead</b> <br />
-        <b>@ViewBag.finalMessage</b> <br />
+        <b>@if (ViewBag.finalMessage != null)
+        {
+            foreach (var item in ViewBag.finalMessage)
+            {
+                @item <br />
+            }
+        }</b> <br />
     </p>
     }

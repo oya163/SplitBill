@@ -9,13 +9,13 @@ namespace SplitBill.Calculation
 {
     public class Calculate
     {
-        private BillingDBContext splitBill = new BillingDBContext();
+        private BillingDBContext splitBillDB = new BillingDBContext();
         private ApplicationDbContext appDB = new ApplicationDbContext();
 
         public double Total(string month)
         {
             double total = 0;
-            var items = from i in splitBill.Billings select i;
+            var items = from i in splitBillDB.Billings select i;
             items = items.Where(s => s.BillingMonth == month);
             total = items.Sum(amt => amt.PaidAmount);
             return total;
@@ -24,7 +24,7 @@ namespace SplitBill.Calculation
         public double perHead(string month)
         {
             double perHead = 0;
-            int noOfPerson = appDB.Users.Count();
+            int noOfPerson = splitBillDB.Users.Count();
             //var items = from i in splitBill.Billings select i;
             //items = items.Where(s => s.BillingMonth == month);
             //total = items.Sum(amt => amt.PaidAmount);

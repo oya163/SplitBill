@@ -15,7 +15,27 @@ namespace SplitBill.Controllers
     {
         private BillingDBContext db = new BillingDBContext();
         private ApplicationDbContext appDB = new ApplicationDbContext();
-        
+
+        public void displayDropDownList()
+        {
+            List<string> monthList = new List<string>();
+            List<string> usersList = new List<string>();
+            var queryMonths = (from months in db.Months select months).ToList();
+            var queryUsers = (from users in db.Users select users).ToList();
+
+            foreach (var item in queryMonths)
+            {
+                monthList.Add(item.month);
+            }
+
+            foreach (var item in queryUsers)
+            {
+                usersList.Add(item.Name);
+            }
+
+            ViewBag.ListOfMonths = monthList;
+            ViewBag.ListOfUsers = usersList;
+        }
 
         // GET: Billings
         public ActionResult Index()
@@ -41,22 +61,7 @@ namespace SplitBill.Controllers
         // GET: Billings/Create
         public ActionResult Create()
         {
-            List<string> monthList = new List<string>();
-            List<string> usersList = new List<string>();
-            var queryMonths = (from months in db.Months select months).ToList();
-            var queryUsers = (from users in appDB.Users select users).ToList();
-            
-            foreach(var item in queryMonths){
-                monthList.Add(item.month);
-            }
-
-            foreach (var item in queryUsers)
-            {
-                usersList.Add(item.UserName);
-            }
-
-            ViewBag.ListOfMonths = monthList;
-            ViewBag.ListOfUsers = usersList;
+            displayDropDownList();
             return View();
         }
 
@@ -89,6 +94,7 @@ namespace SplitBill.Controllers
             {
                 return HttpNotFound();
             }
+            displayDropDownList();
             return View(billing);
         }
 
