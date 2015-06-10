@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SplitBill.Models.Billing>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Report Index</h2>
+
+<p>
+    @using (Html.BeginForm())
+    {
+    <p>
+        @*Title: @Html.TextBox("SearchString") <br />*@
+        Month: @Html.DropDownList("billingMonth") <br />
+        <input type="submit" value="Search" />
+    </p>
+    }
+    
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillingMonth)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaidDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaidBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaidAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillingMonth)
+        </td>
+    </tr>
+}
+
+</table>
+    @using (Html.BeginForm())
+    {
+    <p>
+        <b>Total: @ViewBag.total</b> <br />
+        <b>Per Head: @ViewBag.perHead</b> <br />
+        <b>@ViewBag.finalMessage</b> <br />
+    </p>
+    }

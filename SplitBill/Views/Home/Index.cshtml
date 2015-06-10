@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>SPLIT BILL</h1>
+    <p class="lead">This is a software package which keeps track of monthly expense among friends living together</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Billing", "Index", "Billings")</h2>
+        <p>
+            CRUD operation for each billing expenses
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Report", "Index", "Reports")</h2>
+        <p>View the report of expenses of past months</p>
+    </div>
+</div>
