@@ -13,6 +13,30 @@ namespace SplitBill.Calculation
         private BillingDBContext splitBill = new BillingDBContext();
         private ApplicationDbContext appDB = new ApplicationDbContext();
 
+        public List<int> years()
+        {
+            List<int> yearList = new List<int>();
+
+            for (int i = 2015; i < 2020; i++)
+            {
+                yearList.Add(i);
+            }
+
+            return yearList;
+        }
+
+        public List<string> usersList()
+        {
+            List<string> usersList = new List<string>();
+
+            var queryUsers = (from users in splitBill.Users select users).ToList();
+            foreach (var item in queryUsers)
+            {
+                usersList.Add(item.Name);
+            }
+            return usersList;
+        }
+
         public List<string> month()
         {
             List<string> amonth = new List<string>();
@@ -20,18 +44,18 @@ namespace SplitBill.Calculation
             return amonth;
         }
 
-        public List<string> finalMessage(string month)
+        public List<string> finalMessage(string month, int year)
         {
             int noOfUsers = splitBill.Users.Count();
             Calculate calc = new Calculate();
             List<double> perAmount = new List<double>(noOfUsers);
             List<string> finalMessage = new List<string>();
-            double perHead = calc.perHead(month);
+            double perHead = calc.perHead(month, year);
 
            
             
 
-            var forEachTotal = splitBill.Billings.Where(h => h.BillingMonth == month).
+            var forEachTotal = splitBill.Billings.Where(h => h.BillingMonth == month && h.BillingYear == year).
                             GroupBy(h => new { h.PaidBy }).
                             Select(group => new { PaidBy = group.Key.PaidBy, Amount = group.Sum(s => s.PaidAmount) }).
                             OrderByDescending(item => item.Amount).ToList();

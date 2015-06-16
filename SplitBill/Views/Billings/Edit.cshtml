@@ -36,7 +36,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PaidBy, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PaidBy, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.PaidBy, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model => model.PaidBy, new SelectList(@ViewBag.ListOfUsers), new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PaidBy, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,8 +53,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.BillingMonth, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BillingMonth, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.BillingMonth, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model => model.BillingMonth, new SelectList(@ViewBag.ListOfMonths), "Please Select", new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BillingMonth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillingYear, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.BillingYear, new SelectList(@ViewBag.ListOfYears), "Please Select", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BillingYear, "", new { @class = "text-danger" })
             </div>
         </div>
 

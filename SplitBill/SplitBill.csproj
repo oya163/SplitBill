@@ -181,6 +181,10 @@
     <Compile Include="Migrations\201506100312151_UserTable.Designer.cs">
       <DependentUpon>201506100312151_UserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506101526468_AddBillingYear.cs" />
+    <Compile Include="Migrations\201506101526468_AddBillingYear.Designer.cs">
+      <DependentUpon>201506101526468_AddBillingYear.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Billing.cs" />
@@ -250,10 +254,6 @@
     <Content Include="Views\Billings\Details.cshtml" />
     <Content Include="Views\Billings\Edit.cshtml" />
     <Content Include="Views\Billings\Index.cshtml" />
-    <Content Include="Views\Reports\Create.cshtml" />
-    <Content Include="Views\Reports\Delete.cshtml" />
-    <Content Include="Views\Reports\Details.cshtml" />
-    <Content Include="Views\Reports\Edit.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
@@ -280,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506100312151_UserTable.resx">
       <DependentUpon>201506100312151_UserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506101526468_AddBillingYear.resx">
+      <DependentUpon>201506101526468_AddBillingYear.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,7 +11,8 @@
     {
     <p>
         @*Title: @Html.TextBox("SearchString") <br />*@
-        Month: @Html.DropDownList("billingMonth") <br />
+        Month: @Html.DropDownList("billingMonth") <wbr />
+        Year: @Html.DropDownList("billingYear") <br />
         <input type="submit" value="Search" />
     </p>
     }
@@ -34,6 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.BillingMonth)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillingYear)
+        </th>
         <th></th>
     </tr>
 
@@ -53,6 +57,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BillingMonth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillingYear)
         </td>
     </tr>
 }

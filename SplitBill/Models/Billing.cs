@@ -15,6 +15,7 @@ namespace SplitBill.Models
         public string PaidBy { get; set; }
         public double PaidAmount { get; set; }
         public string BillingMonth { get; set; }
+        public int BillingYear { get; set; }
     }
 
     public class Report

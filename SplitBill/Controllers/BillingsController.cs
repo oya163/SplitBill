@@ -15,26 +15,13 @@ namespace SplitBill.Controllers
     {
         private BillingDBContext db = new BillingDBContext();
         private ApplicationDbContext appDB = new ApplicationDbContext();
+        private Display display = new Display();
 
         public void displayDropDownList()
         {
-            List<string> monthList = new List<string>();
-            List<string> usersList = new List<string>();
-            var queryMonths = (from months in db.Months select months).ToList();
-            var queryUsers = (from users in db.Users select users).ToList();
-
-            foreach (var item in queryMonths)
-            {
-                monthList.Add(item.month);
-            }
-
-            foreach (var item in queryUsers)
-            {
-                usersList.Add(item.Name);
-            }
-
-            ViewBag.ListOfMonths = monthList;
-            ViewBag.ListOfUsers = usersList;
+            ViewBag.ListOfMonths = display.month();
+            ViewBag.ListOfUsers = display.usersList();
+            ViewBag.ListOfYears = display.years();
         }
 
         // GET: Billings
@@ -70,7 +57,7 @@ namespace SplitBill.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,PaidDate,PaidBy,PaidAmount,BillingMonth")] Billing billing)
+        public ActionResult Create([Bind(Include = "ID,Title,PaidDate,PaidBy,PaidAmount,BillingMonth,BillingYear")] Billing billing)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +90,7 @@ namespace SplitBill.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,PaidDate,PaidBy,PaidAmount,BillingMonth")] Billing billing)
+        public ActionResult Edit([Bind(Include = "ID,Title,PaidDate,PaidBy,PaidAmount,BillingMonth,BillingYear")] Billing billing)
         {
             if (ModelState.IsValid)
             {
