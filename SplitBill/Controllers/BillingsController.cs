@@ -27,7 +27,18 @@ namespace SplitBill.Controllers
         // GET: Billings
         public ActionResult Index()
         {
-            return View(db.Billings.ToList());
+            string monthName = DateTime.Now.ToString("MMMM");
+            var items = from m in db.Billings where(m.BillingMonth == monthName) select m ;
+            if (items.Count() != 0)
+            {
+                return View(items);
+            }
+            else
+            {
+                ViewBag.Message = "No items to display";
+                return View(items);
+            }
+            
         }
 
         // GET: Billings/Details/5

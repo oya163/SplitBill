@@ -41,6 +41,13 @@ namespace SplitBill.Controllers
                 ViewBag.perHead = calculate.perHead(billingMonth, billYear);
                 ViewBag.finalMessage = display.finalMessage(billingMonth, billYear);
             }
+            else
+            {
+                string currentMonth = DateTime.Now.ToString("MMMM");
+
+                int currentYear = DateTime.Now.Year;
+                items = items.Where(x => x.BillingMonth == currentMonth && x.BillingYear == currentYear);
+            }
 
             return View(items);
         }

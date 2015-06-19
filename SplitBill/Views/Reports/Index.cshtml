@@ -4,14 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Report Index</h2>
+<h2>Report - @DateTime.Now.ToString("MMMM")</h2>
 
 <p>
     @using (Html.BeginForm())
     {
     <p>
-        @*Title: @Html.TextBox("SearchString") <br />*@
-        Month: @Html.DropDownList("billingMonth") <wbr />
+        Month: @Html.DropDownList("billingMonth","Please select") <wbr />
         Year: @Html.DropDownList("billingYear") <br />
         <input type="submit" value="Search" />
     </p>

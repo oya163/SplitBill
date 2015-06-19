@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Index - @DateTime.Now.ToString("MMMM")</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -32,32 +32,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaidDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaidBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaidAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BillingMonth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BillingYear)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingMonth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingYear)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<p>
+    @ViewBag.Message <br />
+</p>
+
