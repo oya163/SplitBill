@@ -36,10 +36,13 @@ namespace SplitBill.Controllers
 
             if (!string.IsNullOrEmpty(billingMonth) && !string.IsNullOrEmpty(billingYear))
             {
-                items = items.Where(x => x.BillingMonth == billingMonth && x.BillingYear.ToString() == billingYear) ;
-                ViewBag.total = calculate.Total(billingMonth, billYear);
-                ViewBag.perHead = calculate.perHead(billingMonth, billYear);
-                ViewBag.finalMessage = display.finalMessage(billingMonth, billYear);
+                items = items.Where(x => x.BillingMonth == billingMonth && x.BillingYear.ToString() == billingYear);
+                if (items.Count() != 0)
+                {
+                    ViewBag.total = calculate.Total(billingMonth, billYear);
+                    ViewBag.perHead = calculate.perHead(billingMonth, billYear);
+                    ViewBag.finalMessage = display.finalMessage(billingMonth, billYear);
+                }
             }
             else
             {
